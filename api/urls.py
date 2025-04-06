@@ -1,13 +1,20 @@
 from django.urls import path ,include
 from courses.views import  CategoryViewSet,CourseViewSet,ReviewViewSet
+from payments.views import CartViewSet, CartItemViewSet, OrderViewset
+
 from rest_framework_nested import routers
 
 router= routers.DefaultRouter()
 router.register('course',CourseViewSet)
 router.register('categories', CategoryViewSet)
+router.register('carts', CartViewSet, basename='carts')
+router.register('orders', OrderViewset, basename='orders')
 
 course_router= routers.NestedSimpleRouter(router,'course',lookup='course')
 course_router.register('reviews',ReviewViewSet,basename='course-review')
+cart_router = routers.NestedDefaultRouter(router, 'carts', lookup='cart')
+cart_router.register('items', CartItemViewSet, basename='cart-item')
+
 
 
 urlpatterns = [

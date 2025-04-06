@@ -56,3 +56,4 @@ class ReviewSerializer(serializers.ModelSerializer):
         return Review.objects.create(course_id=course_id, **validated_data)
     
   
+ 
