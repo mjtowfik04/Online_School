@@ -1,0 +1,122 @@
+[
+    {
+        "model": "courses.Category",
+        "pk": 1,
+        "fields": {
+            "title": "Electronics",
+            "description": "Devices and gadgets"
+        }
+    },
+    {
+        "model": "courses.Category",
+        "pk": 2,
+        "fields": {
+            "title": "Fashion",
+            "description": "Clothing and accessories"
+        }
+    },
+    {
+        "model": "courses.Category",
+        "pk": 3,
+        "fields": {
+            "title": "Home Appliances",
+            "description": "Appliances for home use"
+        }
+    },
+    {
+        "model": "courses.Category",
+        "pk": 4,
+        "fields": {
+            "title": "Books",
+            "description": "Books and educational materials"
+        }
+    },
+
+
+    {
+        "model": "courses.Course",
+        "pk": 1,
+        "fields": {
+            "title": "Smartphone",
+            "description": "High-quality smartphone for everyday use.",
+            "price": "213.80",
+            "category": 1,
+            "created_at": "2025-02-05T02:45:04.629624",
+            "updated_at": "2025-02-08T02:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 2,
+        "fields": {
+            "title": "Laptop",
+            "description": "High-quality laptop for everyday use.",
+            "price": "46.92",
+            "category": 1,
+            "created_at": "2025-02-02T15:45:04.629624",
+            "updated_at": "2025-02-02T15:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 3,
+        "fields": {
+            "title": "Wireless Headphones",
+            "description": "High-quality wireless headphones for everyday use.",
+            "price": "144.57",
+            "category": 1,
+            "created_at": "2025-02-07T11:45:04.629624",
+            "updated_at": "2025-02-09T11:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 4,
+        "fields": {
+            "title": "Smartwatch",
+            "description": "High-quality smartwatch for everyday use.",
+            "price": "339.21",
+            "category": 1,
+            "created_at": "2025-01-23T08:45:04.629624",
+            "updated_at": "2025-01-28T08:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 5,
+        "fields": {
+            "title": "Tablet",
+            "description": "High-quality tablet for everyday use.",
+            "price": "417.98",
+            
+            "category": 1,
+            "created_at": "2025-02-19T19:45:04.629624",
+            "updated_at": "2025-02-23T19:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 6,
+        "fields": {
+            "title": "Bluetooth Speaker",
+            "description": "High-quality bluetooth speaker for everyday use.",
+            "price": "245.54",
+            
+            "category": 1,
+            "created_at": "2025-01-26T14:45:04.629624",
+            "updated_at": "2025-01-28T14:45:04.629624"
+        }
+    },
+    {
+        "model": "courses.Course",
+        "pk": 7,
+        "fields": {
+            "title": "Digital Camera",
+            "description": "High-quality digital camera for everyday use.",
+            "price": "239.33",
+            "category": 1,
+            "created_at": "2025-02-08T04:45:04.629624",
+            "updated_at": "2025-02-11T04:45:04.629624"
+        }
+    }
+]
