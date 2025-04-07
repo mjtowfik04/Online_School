@@ -12,8 +12,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description', 'course_count']
 
 
-
-  
 class CourseImageSerializer(serializers.ModelSerializer):
     image=serializers.ImageField()
     class Meta:

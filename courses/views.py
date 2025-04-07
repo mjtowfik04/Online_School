@@ -6,7 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from courses.filters import CoursetFilter
 from rest_framework.filters import SearchFilter, OrderingFilter
 from courses.paginations import DefaultPagination
-# from api.permissions import IsAdminOrReadOnly
+from api.permissions import IsAdminOrReadOnly
 from courses.permissions import IsReviewAuthorOrReadonly
 
 
@@ -18,23 +18,23 @@ class CourseViewSet(ModelViewSet):
     pagination_class = DefaultPagination
     search_fields = ['name', 'description']
     ordering_fields = ['price', 'updated_at']
-    # permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
 
 
 class CourseImageViewSet(ModelViewSet):
     serializer_class = CourseImageSerializer
-    # permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
 
 
     def get_queryset(self):
-        return CourseImage.objects.filter(Course_id=self.kwargs.get('course_pk'))
+        return CourseImage.objects.filter(course_id=self.kwargs.get('course_pk'))
 
     def perform_create(self, serializer):
-        serializer.save(Course_id=self.kwargs.get('course_pk'))
+        serializer.save(course_id=self.kwargs.get('course_pk'))
 
 
 class CategoryViewSet(ModelViewSet):
-    # permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
     queryset = Category.objects.annotate(
         Course_count=Count('courses')).all()
     serializer_class = CategorySerializer

@@ -25,7 +25,7 @@ class Course(models.Model):
 class CourseImage(models.Model):
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE, related_name='images')
-    image =CloudinaryField('image')
+    image = CloudinaryField('image')
     
 
 class Review(models.Model):
