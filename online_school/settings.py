@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'djoser',
     'drf_yasg',
     'django_filters',
+    "corsheaders",
     'api',
     'users',
     'payments',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,6 +69,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'online_school.wsgi.app'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173"
+]
 
 
 # Database
@@ -192,3 +199,5 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
