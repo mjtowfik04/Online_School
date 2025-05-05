@@ -1,5 +1,5 @@
-from courses.models import  Course, Category, Review,CourseImage
-from courses.serializers import CourseSerializer, CategorySerializer, ReviewSerializer,CourseImageSerializer
+from courses.models import  Course, Category, Review,CourseImage,CategoryImage
+from courses.serializers import CourseSerializer, CategorySerializer, ReviewSerializer,CourseImageSerializer,CategoryImageSerializer
 from django.db.models import Count
 from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
@@ -38,6 +38,17 @@ class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.annotate(
         Course_count=Count('courses')).all()
     serializer_class = CategorySerializer
+
+class CategoryImageViewSet(ModelViewSet):
+    serializer_class =CategoryImageSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+
+    def get_queryset(self):
+        return CategoryImage.objects.filter(category_id=self.kwargs.get('Category_pk'))
+
+    def perform_create(self, serializer):
+        serializer.save(category_id=self.kwargs.get('Category_pk'))
 
 
 class ReviewViewSet(ModelViewSet):

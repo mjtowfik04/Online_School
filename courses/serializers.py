@@ -1,15 +1,25 @@
 from rest_framework import serializers
 from decimal import Decimal
-from courses .models import Category,Course, Review,CourseImage
+from courses .models import Category,Course, Review,CourseImage,CategoryImage
 from django.contrib.auth import get_user_model
 
 
+class CategoryImageSerializer(serializers.ModelSerializer):
+    image=serializers.ImageField()
+    class Meta:
+        model =CategoryImage
+        fields = ['id','image']
+
 class CategorySerializer(serializers.ModelSerializer):
     course_count = serializers.IntegerField(read_only=True)
+    images=CategoryImageSerializer(many=True,read_only=True)
+
 
     class Meta:
         model = Category
-        fields = ['id', 'title', 'description', 'course_count']
+        fields = ['id', 'title', 'description', 'course_count','images']
+
+
 
 
 class CourseImageSerializer(serializers.ModelSerializer):

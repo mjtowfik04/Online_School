@@ -9,6 +9,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+    
+class CategoryImage(models.Model):
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name='images')
+    image = CloudinaryField('image')
 
 
 class Course(models.Model):
