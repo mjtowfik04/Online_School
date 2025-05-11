@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'online_school.wsgi.app'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://online-school-clinent-git-main-mjtowfiks-projects.vercel.app/"
+    "https://online-school-clinent.vercel.app"
 ]
 
 
