@@ -12,7 +12,7 @@ class EmptySerializer(serializers.Serializer):
 class SimpleProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ['id', 'name', 'price']
+        fields = ['id', 'title', 'price']
 
 
 class AddCartItemSerializer(serializers.ModelSerializer):
