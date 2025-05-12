@@ -2,8 +2,7 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config
 import cloudinary
-from dotenv import load_dotenv
-load_dotenv()
+
 
 import cloudinary
 BASE_DIR = Path(__file__).resolve().parent.parent
