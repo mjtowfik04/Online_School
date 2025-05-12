@@ -2,7 +2,7 @@
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
-# import cloudinar
+import cloudinary
 
 
 
@@ -16,9 +16,6 @@ DEBUG = False
 ALLOWED_HOSTS = [".vercel.app",'127.0.0.1']
 AUTH_USER_MODEL = 'users.User'
 
-
-
-
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     'django.contrib.admin',
@@ -27,9 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'rest_framework',
     'djoser',
-    'drf_yasg',
     'django_filters',
     "corsheaders",
     'api',
@@ -139,6 +136,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE="whitenoise.storage.CompressedStaticFilesStorage"
+STATIC_URL = '/static/'
+
+
 
 
 
@@ -188,16 +188,16 @@ SWAGGER_SETTINGS = {
 }
 
 
-# cloudinary.config( 
-#     cloud_name = config('cloud_name'), 
-#     api_key = config('cloudinary_api_key'), 
-#     api_secret = config('api_secret'),
-#     CLOUDINARY_URL=config('CLOUDINARY_URL'),
-#     secure=True,
+cloudinary.config( 
+    cloud_name = config('cloud_name'), 
+    api_key = config('cloudinary_api_key'), 
+    api_secret = config('api_secret'),
+    CLOUDINARY_URL=config('CLOUDINARY_URL'),
+    secure=True,
 
-# )
+)
 
-# DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')
