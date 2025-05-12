@@ -1,6 +1,6 @@
 from django.urls import path ,include
 from courses.views import  CategoryViewSet,CourseViewSet,ReviewViewSet,CourseImageViewSet,CategoryImageViewSet
-from payments.views import CartViewSet, CartItemViewSet, OrderViewset
+from order.views import CartViewSet, CartItemViewSet, OrderViewset
 
 from rest_framework_nested import routers
 
