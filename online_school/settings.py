@@ -1,10 +1,11 @@
+
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
 import cloudinary
 
 
-import cloudinary
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -14,6 +15,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = [".vercel.app",'127.0.0.1']
 AUTH_USER_MODEL = 'users.User'
+
+
+
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
@@ -30,8 +34,12 @@ INSTALLED_APPS = [
     "corsheaders",
     'api',
     'users',
-    'payments',
+    'order',
     'courses',
+    'cloudinary',
+    'cloudinary_storage',
+
+    
 ]
 
 MIDDLEWARE = [
@@ -184,10 +192,12 @@ SWAGGER_SETTINGS = {
 cloudinary.config( 
     cloud_name = config('cloud_name'), 
     api_key = config('cloudinary_api_key'), 
-    api_secret = config('api_secret'), 
+    api_secret = config('api_secret'),
+    CLOUDINARY_URL=config('CLOUDINARY_URL'),
     secure=True,
 
 )
+
 DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
