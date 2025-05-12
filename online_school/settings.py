@@ -2,7 +2,7 @@
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
-import cloudinary
+# import cloudinar
 
 
 
@@ -36,8 +36,7 @@ INSTALLED_APPS = [
     'users',
     'order',
     'courses',
-    'cloudinary',
-    'cloudinary_storage',
+    
 
     
 ]
@@ -189,16 +188,16 @@ SWAGGER_SETTINGS = {
 }
 
 
-cloudinary.config( 
-    cloud_name = config('cloud_name'), 
-    api_key = config('cloudinary_api_key'), 
-    api_secret = config('api_secret'),
-    CLOUDINARY_URL=config('CLOUDINARY_URL'),
-    secure=True,
+# cloudinary.config( 
+#     cloud_name = config('cloud_name'), 
+#     api_key = config('cloudinary_api_key'), 
+#     api_secret = config('api_secret'),
+#     CLOUDINARY_URL=config('CLOUDINARY_URL'),
+#     secure=True,
 
-)
+# )
 
-DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')

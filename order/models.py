@@ -22,7 +22,7 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
     class Meta:
-        unique_together = [['cart', ' course']]
+        unique_together = [['cart','course']]
 
     def __str__(self):
         return f"{self.quantity} x {self. course.title}"
