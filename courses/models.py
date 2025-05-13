@@ -37,7 +37,6 @@ class CourseImage(models.Model):
     image = models.ImageField(upload_to='category_images/')
 
 
-    
 
 class Review(models.Model):
     course=models.ForeignKey(Course,on_delete=models.CASCADE)

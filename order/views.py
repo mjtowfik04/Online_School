@@ -26,15 +26,12 @@ class CartViewSet(CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, Gener
         return Cart.objects.prefetch_related('items__product').filter(user=self.request.user)
 
     def create(self, request, *args, **kwargs):
-        # Check if the user already has an active cart
         existing_cart = Cart.objects.filter(user=request.user).first()
 
         if existing_cart:
-            # Return the existing cart if it exists
             serializer = self.get_serializer(existing_cart)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-        # Otherwise, proceed with creating a new cart
         return super().create(request, *args, **kwargs)
 
 
@@ -56,7 +53,7 @@ class CartItemViewSet(ModelViewSet):
         return {'cart_id': self.kwargs.get('cart_pk')}
 
     def get_queryset(self):
-        return CartItem.objects.select_related('product').filter(cart_id=self.kwargs.get('cart_pk'))
+        return CartItem.objects.select_related('course').filter(cart_id=self.kwargs.get('cart_pk'))
 
 
 class OrderViewset(ModelViewSet):
@@ -100,8 +97,8 @@ class OrderViewset(ModelViewSet):
         if getattr(self, 'swagger_fake_view', False):
             return Order.objects.none()
         if self.request.user.is_staff:
-            return Order.objects.prefetch_related('items__product').all()
-        return Order.objects.prefetch_related('items__product').filter(user=self.request.user)
+            return Order.objects.prefetch_related('items__ course').all()
+        return Order.objects.prefetch_related('items__ course').filter(user=self.request.user)
 
 
 # @api_view(['POST'])
