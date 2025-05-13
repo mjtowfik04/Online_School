@@ -23,7 +23,7 @@ class CartViewSet(CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, Gener
     def get_queryset(self):
         if getattr(self, 'swagger_fake_view', False):
             return Cart.objects.none()
-        return Cart.objects.prefetch_related('items__product').filter(user=self.request.user)
+        return Cart.objects.prefetch_related('items__course').filter(user=self.request.user)
 
     def create(self, request, *args, **kwargs):
         existing_cart = Cart.objects.filter(user=request.user).first()
@@ -97,8 +97,8 @@ class OrderViewset(ModelViewSet):
         if getattr(self, 'swagger_fake_view', False):
             return Order.objects.none()
         if self.request.user.is_staff:
-            return Order.objects.prefetch_related('items__ course').all()
-        return Order.objects.prefetch_related('items__ course').filter(user=self.request.user)
+            return Order.objects.prefetch_related('items__course').all()
+        return Order.objects.prefetch_related('items__course').filter(user=self.request.user)
 
 
 # @api_view(['POST'])
