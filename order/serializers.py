@@ -16,20 +16,20 @@ class SimpleProductSerializer(serializers.ModelSerializer):
 
 
 class AddCartItemSerializer(serializers.ModelSerializer):
-    product_id = serializers.IntegerField()
+    course_id = serializers.IntegerField()
 
     class Meta:
         model = CartItem
-        fields = ['id', 'product_id', 'quantity']
+        fields = ['id', ' course_id', 'quantity']
 
     def save(self, **kwargs):
         cart_id = self.context['cart_id']
-        product_id = self.validated_data['product_id']
+        course_id = self.validated_data['course_id']
         quantity = self.validated_data['quantity']
 
         try:
             cart_item = CartItem.objects.get(
-                cart_id=cart_id, product_id=product_id)
+                cart_id=cart_id, course_id= course_id)
             cart_item.quantity += quantity
             self.instance = cart_item.save()
         except CartItem.DoesNotExist:
@@ -52,16 +52,16 @@ class UpdateCartItemSerializer(serializers.ModelSerializer):
 
 
 class CartItemSerializer(serializers.ModelSerializer):
-    product = SimpleProductSerializer()
+    course = SimpleProductSerializer()
     total_price = serializers.SerializerMethodField(
         method_name='get_total_price')
 
     class Meta:
         model = CartItem
-        fields = ['id', 'product', 'quantity', 'product', 'total_price']
+        fields = ['id', ' course', 'quantity', ' course', 'total_price']
 
     def get_total_price(self, cart_item: CartItem):
-        return cart_item.quantity * cart_item.product.price
+        return cart_item.quantity * cart_item. course.price
 
 
 class CartSerializer(serializers.ModelSerializer):
@@ -76,7 +76,7 @@ class CartSerializer(serializers.ModelSerializer):
 
     def get_total_price(self, cart: Cart):
         return sum(
-            [item.product.price * item.quantity for item in cart.items.all()])
+            [item.course.price * item.quantity for item in cart.items.all()])
 
 
 class CreateOrderSerializer(serializers.Serializer):
@@ -110,7 +110,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ['id', 'product', 'price', 'quantity', 'total_price']
+        fields = ['id', 'course', 'price', 'quantity', 'total_price']
 
 
 class UpdateOrderSerializer(serializers.ModelSerializer):
