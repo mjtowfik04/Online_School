@@ -1,9 +1,9 @@
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
-import cloudinary
+# import cloudinary
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 
 
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('dbname'),
         'USER': config('user'),
-        'PASSWORD': config('password'),
+        'PASSWORD':config('password'),
         'HOST': config('host'),
         'PORT': config('port')
     }
@@ -187,13 +187,13 @@ SWAGGER_SETTINGS = {
 }
 
 
-cloudinary.config( 
-    cloud_name = config('cloud_name'), 
-    api_key = config('cloudinary_api_key'), 
-    api_secret = config('api_secret'),
-    secure=True,
-)
-DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+# cloudinary.config( 
+#     cloud_name = config('cloud_name'), 
+#     api_key = config('cloudinary_api_key'), 
+#     api_secret = config('api_secret'),
+#     secure=True,
+# )
+# DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
