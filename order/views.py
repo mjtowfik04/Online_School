@@ -72,7 +72,7 @@ class OrderViewset(ModelViewSet):
             order, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response({'status': f'Order status updated to {request.data['status']}'})
+        Response({'status': f'Order status updated to {request.data['status']}'})
 
     def get_permissions(self):
         if self.action in ['update_status', 'destroy']:

@@ -11,7 +11,7 @@ from courses.permissions import IsReviewAuthorOrReadonly
 
 
 class CourseViewSet(ModelViewSet):
-    queryset = Course.objects.all().order_by('id')
+    queryset = Course.objects.order_by('id')
     serializer_class = CourseSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class =CoursetFilter
@@ -36,7 +36,7 @@ class CourseImageViewSet(ModelViewSet):
 class CategoryViewSet(ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     queryset = Category.objects.annotate(
-        Course_count=Count('courses')).all()
+        Course_count=Count('courses')).order_by('id')
     serializer_class = CategorySerializer
 
 class CategoryImageViewSet(ModelViewSet):
