@@ -23,17 +23,21 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class CourseImageSerializer(serializers.ModelSerializer):
-    image=serializers.ImageField()
+    video_file = serializers.FileField()  # corrected field name and type
+
     class Meta:
-        model =CourseImage
-        fields = ['id','image']
+        model = CourseImage
+        fields = ['id', 'video_file']
+
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    images=CourseImageSerializer(many=True,read_only=True)
+    images = CourseImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Course
-        fields = ['id', 'title', 'description', 'price', 'category','images']  
+        fields = ['id', 'title', 'description', 'price', 'category', 'images']
+ 
 
     
 class SimpleUserSerializer(serializers.ModelSerializer):

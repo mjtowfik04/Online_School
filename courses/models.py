@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 # from cloudinary.models import CloudinaryField
+from .validators import validate_video_file_extension
+
 
 
 class Category(models.Model):
@@ -30,11 +32,15 @@ class Course(models.Model):
     def __str__(self):
         return self.title
     
+
 class CourseImage(models.Model):
     course = models.ForeignKey(
         Course, on_delete=models.CASCADE, related_name='images')
-    # image = CloudinaryField('image')
-    image = models.ImageField(upload_to='category_images/')
+    video_file = models.FileField(
+        upload_to='videos/',
+        validators=[validate_video_file_extension]
+    )
+
 
 
 
