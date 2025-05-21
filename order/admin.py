@@ -1,18 +1,14 @@
-from django.contrib import admin
-from order.models import Cart, CartItem, Order, OrderItem
+# from django.contrib import admin
+# from order.models import Enroll
 
-# Register your models here.
-
-
-@admin.register(Cart)
-class CartAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user']
+# # Register your models here.
 
 
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'status']
+# @admin.register(Enroll)
+# class EnrollAdmin(admin.ModelAdmin):
+#     list_display = ['id', 'user', 'course', 'enrolled_at']
+#     list_filter = ['course']
+#     search_fields = ['user__username', 'course__title']
 
 
-admin.site.register(CartItem)
-admin.site.register(OrderItem)
+# admin.site.register(Enroll)
