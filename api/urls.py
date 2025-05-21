@@ -1,6 +1,6 @@
 from django.urls import path, include
 from courses.views import CategoryViewSet, CourseViewSet, ReviewViewSet, CourseImageViewSet, CategoryImageViewSet
-from order.views import EnrollCreateView
+from order.views import EnrollCreateView,initiate_payment
 from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
@@ -21,4 +21,6 @@ urlpatterns = [
     path('enroll/', EnrollCreateView.as_view(), name='enroll-create'),  # ✅ added correctly
     path('', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('payment/initiate/',initiate_payment,name="initiate_payment")
 ]
+
