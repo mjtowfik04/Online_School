@@ -53,17 +53,16 @@ def initiate_payment(request):
 @api_view(['POST'])
 def payment_success(request):
     print("Inside success")
-    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/login")
+    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}")
 
     
 
+@api_view(['POST'])
+def payment_cancel(request):
+    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}")
 
-# @api_view(['POST'])
-# def payment_cancel(request):
-#     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/")
 
-
-# @api_view(['POST'])
-# def payment_fail(request):
-#     print("Inside fail")
-#     return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/")
+@api_view(['POST'])
+def payment_fail(request):
+    print("Inside fail")
+    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}")
