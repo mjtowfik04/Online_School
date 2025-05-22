@@ -14,7 +14,8 @@ class EnrollCreateView(generics.CreateAPIView):
 
 @api_view(['POST'])
 def initiate_payment(request):
-    user=request.user
+    # user=request.user
+    # print(user)
     settings = { 'store_id': 'alo682e1dbdb5d29', 'store_pass': 'alo682e1dbdb5d29@ssl', 'issandbox': True }
     sslcz = SSLCOMMERZ(settings)
     post_body = {}
@@ -25,10 +26,10 @@ def initiate_payment(request):
     post_body['fail_url'] = "your fail url"
     post_body['cancel_url'] = "your cancel url"
     post_body['emi_option'] = 0
-    post_body['cus_name'] = f"{user.first_name} {user.last_name}"
-    post_body['cus_email'] = user.email
-    post_body['cus_phone'] = user.phone_number
-    post_body['cus_add1'] = user.address
+    post_body['cus_name'] = "user.first_nameuser.last_name"
+    post_body['cus_email'] = 'user.email'
+    post_body['cus_phone'] = 'user.phone_number'
+    post_body['cus_add1'] = 'user.address'
     post_body['cus_city'] = "Dhaka"
     post_body['cus_country'] = "Bangladesh"
     post_body['shipping_method'] = "NO"
@@ -40,6 +41,7 @@ def initiate_payment(request):
 
 
     response = sslcz.createSession(post_body) 
+    print(response)
     if response.get("status") == 'SUCCESS':
         return Response({"payment_url": response['GatewayPageURL']})
     return Response({"error": "Payment initiation failed"}, status=status.HTTP_400_BAD_REQUEST)
