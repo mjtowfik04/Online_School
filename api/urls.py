@@ -21,6 +21,9 @@ urlpatterns = [
     path('enroll/', EnrollCreateView.as_view(), name='enroll-create'),  # ✅ added correctly
     path('', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('payment/initiate/',initiate_payment,name="initiate_payment")
+    path('payment/initiate/',initiate_payment,name="initiate_payment"),
+    path("payment/success/", payment_success, name="payment-success"),
+    path("payment/fail/", payment_fail, name="payment-fail"),
+    path("payment/cancel/", payment_cancel, name="payment-cancel"),
 ]
 
