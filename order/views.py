@@ -53,7 +53,7 @@ def initiate_payment(request):
 @api_view(['POST'])
 def payment_success(request):
     print("Inside success")
-    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}")
+    return HttpResponseRedirect(f"{main_settings.FRONTEND_URL}/login")
 
     
 
